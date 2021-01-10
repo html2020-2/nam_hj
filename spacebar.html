@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title> space bar </title>
+  <style>
+    body{margin: 0;padding: 0;}
+    #wrap{height: 10000px;}
+    #box{height: 1000px;background: aqua;}
+  </style>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+  <script>
+    $(document).ready(function() {
+      var a = false;
+      $(window).on('scroll', function () {
+        var scrollY = $(this).scrollTop();
+        if (scrollY > 200) a = true;
+      });
+      var num = 0;
+      $(window).on('keydown', function (e) {
+        if (e.keyCode === 32 && a) e.preventDefault();
+        
+        console.log('keydown : ' + num++);
+      });
+      $(window).on('keyup', function (e) {
+        if (e.keyCode === 32) e.preventDefault();
+        
+        console.log(num++);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <div id="box">box</div>
+  </div>
+</body>
+</html>
